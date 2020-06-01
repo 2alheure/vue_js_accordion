@@ -4,8 +4,6 @@ A simple Accordion component for Vue JS.
 ## How to use
 Download the component file and place it in your `components/` folder.  
 Then, you can import it with `import Accordion from "@/components/Accordion.vue";`.  
-  
-Nota Bene: this component was built using [Tailwind CSS](https://tailwindcss.com/). If you don't want to use it, then check the `alternative_style.css` file and add its content to the component's `<style>` tag.
 
 ## Props
 You can pass several props to the component, mainly to style it as you wish:
