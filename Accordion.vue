@@ -1,5 +1,19 @@
+<style scoped>
+.accordion-header {
+  cursor: pointer;
+  display: flex;
+}
 
-<style>
+.accordion-header div:first-child {
+  flex-grow: 1;
+}
+
+.accordion-symbol {
+  flex-grow: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .accordion-content {
   transition: 1.5s ease all;
 }
@@ -7,23 +21,15 @@
 
 <template>
   <div class="accordion" :style="accordionStyle">
-    <div
-      class="accordion-header cursor-pointer flex"
-      :style="titleStyle"
-      @click="opened = !opened"
-    >
-      <div class="transparent flex-grow">
+    <div class="accordion-header" :style="headerStyle" @click="isOpened = !isOpened">
+      <div>
         <slot name="header"></slot>
       </div>
 
-      <span
-        class="transparent flex-grow-0 px-2"
-        v-html="correctSymbol"
-		:style="symbolStyle"
-      ></span>
+      <span class="accordion-symbol" v-html="correctSymbol" :style="symbolStyle"></span>
     </div>
 
-    <div class="accordion-content" :style="contentStyle" v-show="opened">
+    <div class="accordion-content" :style="contentStyle" v-show="isOpened">
       <slot></slot>
     </div>
   </div>
@@ -33,12 +39,11 @@
 export default {
   name: "accordion",
   props: {
-	accordionStyle: {
-	type: [String, Object],
-	default: "text-align: left; background-color: inherit; color: inherit;"
-	},
-    title: String,
-    titleStyle: {
+    accordionStyle: {
+      type: [String, Object],
+      default: "text-align: left; background-color: inherit; color: inherit;"
+    },
+    headerStyle: {
       type: [String, Object],
       default: "padding: .5rem;"
     },
@@ -50,24 +55,25 @@ export default {
       type: [String, Object],
       default: "width: 98%; margin: auto; padding: .5rem;"
     },
-    whenOpened: {
+    symbolOpened: {
       type: String,
       default: "&or;"
     },
-    whenClosed: {
+    symbolClosed: {
       type: String,
       default: "&gt;"
-    }
+    },
+    opened: Boolean
   },
   data() {
     return {
-      opened: true
+      isOpened: this.opened
     };
   },
   computed: {
     correctSymbol() {
-      return this.opened ? this.whenOpened : this.whenClosed;
+      return this.isOpened ? this.symbolOpened : this.symbolClosed;
     }
   }
 };
-</script>			
+</script>
