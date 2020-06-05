@@ -6,12 +6,14 @@
 
 .accordion-header div:first-child {
   flex-grow: 1;
+  align-self: center;
 }
 
 .accordion-symbol {
   flex-grow: 0;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  align-self: center;
 }
 
 .accordion-content {
@@ -20,16 +22,16 @@
 </style>
 
 <template>
-  <div class="accordion" :style="accordionStyle">
-    <div class="accordion-header" :style="headerStyle" @click="isOpened = !isOpened">
+  <div class="accordion" :style="accordionStyle" :class="accordionClass">
+    <div class="accordion-header" :style="headerStyle" :class="headerClass" @click="isOpened = !isOpened">
       <div>
         <slot name="header"></slot>
       </div>
 
-      <span class="accordion-symbol" v-html="correctSymbol" :style="symbolStyle"></span>
+      <span class="accordion-symbol" v-html="correctSymbol" :style="symbolStyle" :class="symbolClass"></span>
     </div>
 
-    <div class="accordion-content" :style="contentStyle" v-show="isOpened">
+    <div class="accordion-content" :style="contentStyle" :class="contentClass" v-show="isOpened">
       <slot></slot>
     </div>
   </div>
@@ -43,18 +45,22 @@ export default {
       type: [String, Object],
       default: "text-align: left; background-color: inherit; color: inherit;"
     },
+    accordionClass: [String, Object],
     headerStyle: {
       type: [String, Object],
       default: "padding: .5rem;"
     },
+    headerClass: [String, Object],
     symbolStyle: {
       type: [String, Object],
-      default: "font-size: 1.25rem; font-weight: 700; vertical-align: middle;"
+      default: "font-size: 1.5rem; font-weight: 700; vertical-align: middle;"
     },
+    symbolClass: [String, Object],
     contentStyle: {
       type: [String, Object],
       default: "width: 98%; margin: auto; padding: .5rem;"
     },
+    contentClass: [String, Object],
     symbolOpened: {
       type: String,
       default: "&or;"
