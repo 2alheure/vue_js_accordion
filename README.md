@@ -10,6 +10,7 @@ You can pass several props to the component, mainly to style it as you wish:
 - `opened` is a boolean, that defaults to `false`, and tells whether the content should be displayed by default.
 - `symbolOpened` and `symbolClosed` are two String parameters that define what to use as symbol for opened and closed accordion. They respectively default to `&or;` and `&gt;`. Can be HTML.
 - `accordionStyle`, `headerStyle`, `symbolStyle` and `contentStyle` are 4 props used to style different parts of the accordion. They can be String or Object and default to the basic styling of this component. The component is very lightly styled so you can customize it as you wish.
+- `accordionClass`, `headerClass`, `symbolClass` and `contentClass` are 4 props used to set classes to different parts of the accordion. They can be String or Objects and default to `null`.
 
 ## Example
 ```html
