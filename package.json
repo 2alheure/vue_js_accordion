@@ -1,0 +1,23 @@
+{
+  "name": "@2alheure/vue-accordion",
+  "version": "1.0.0",
+  "description": "A simple Accordion component for Vue.js",
+  "main": "src/Accordion.vue",
+  "scripts": {
+    "test": "vue serve src/Accordion.vue"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2alheure/vue_js_accordion.git"
+  },
+  "keywords": [
+    "Vue.js",
+    "accordion"
+  ],
+  "author": "2alheure <contact@2alheure.fr>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/2alheure/vue_js_accordion/issues"
+  },
+  "homepage": "https://github.com/2alheure/vue_js_accordion#readme"
+}
