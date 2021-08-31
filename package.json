@@ -1,6 +1,6 @@
 {
   "name": "@2alheure/vue-accordion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Accordion component for Vue.js",
   "main": "src/Accordion.vue",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "Vue.js",
+    "Vue 3",
     "accordion"
   ],
   "author": "2alheure <contact@2alheure.fr>",

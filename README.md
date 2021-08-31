@@ -1,5 +1,6 @@
 # Vue JS Accordion
-A simple Accordion component for Vue JS.
+A simple Accordion component for Vue JS.  
+This component is compatible with Vue 3.
 
 ## How to use
 Download the component file and place it in your `components/` folder.  
@@ -24,7 +25,7 @@ You can pass several props to the component, mainly to style it as you wish:
 </Accordion>
 
 <script>
-  import Accordion from "@/components/Accordion.vue";
+  import Accordion from "@2alheure/vue-accordion";
   
   export default {
     components: {
