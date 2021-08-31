@@ -28,7 +28,7 @@
       class="accordion-header"
       :style="headerStyle"
       :class="headerClass"
-      @click="open"
+      @click="switchState"
     >
       <div>
         <slot name="header"></slot>
@@ -94,8 +94,17 @@ export default {
   },
   methods: {
     open() {
-      this.isOpened = !this.isOpened;
+      this.isOpened = true;
       this.$emit("open");
+    },
+    switchState() {
+      this.$emit("switch");
+      if (this.isOpened) this.open();
+      else this.close();
+    },
+    close() {
+      this.isOpened = false;
+      this.$emit("close");
     },
   },
 };
