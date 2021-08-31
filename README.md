@@ -2,18 +2,19 @@
 A simple Accordion component for Vue JS.  
 This component is compatible with Vue 3.
 
-## How to use
-Download the component file and place it in your `components/` folder.  
-Then, you can import it with `import Accordion from "@/components/Accordion.vue";`.  
+- [Vue JS Accordion](#vue-js-accordion)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Simple usage example](#simple-usage-example)
+  - [Props](#props)
+  - [Events](#events)
 
-## Props
-You can pass several props to the component, mainly to style it as you wish:
-- `opened` is a boolean, that defaults to `false`, and tells whether the content should be displayed by default.
-- `symbolOpened` and `symbolClosed` are two String parameters that define what to use as symbol for opened and closed accordion. They respectively default to `&or;` and `&gt;`. Can be HTML.
-- `accordionStyle`, `headerStyle`, `symbolStyle` and `contentStyle` are 4 props used to style different parts of the accordion. They can be String or Object and default to the basic styling of this component. The component is very lightly styled so you can customize it as you wish.
-- `accordionClass`, `headerClass`, `symbolClass` and `contentClass` are 4 props used to set classes to different parts of the accordion. They can be String or Objects and default to `null`.
+## Installation
+First, run `npm install @2alheure/vue-accordion`.  
+Then import it with `import Accordion from "@2alheure/vue-accordion";`.  
 
-## Example
+## Usage
+### Simple usage example
 ```html
 <Accordion :headerStyle="headerStyle" :contentStyle="contentStyle">
   <template #header">
@@ -43,3 +44,24 @@ You can pass several props to the component, mainly to style it as you wish:
   };
 </script>
 ```
+
+## Props
+| Name           |      Type       |                         Default value                          | Description                                                |
+| :------------- | :-------------: | :------------------------------------------------------------: | ---------------------------------------------------------- |
+| opened         |     Boolean     |                            `false`                             | Whether the content should be displayed when loaded.       |
+| symbolOpened   |     String      |                             `&or;`                             | The symbol to use for the opened accordion. (Can be HTML.) |
+| symbolClosed   |     String      |                             `&gt;`                             | The symbol to use for the closed accordion. (Can be HTML.) |
+| headerStyle    | String / Object |                       `padding: .5rem;`                        | The style for the header.                                  |
+| symbolStyle    | String / Object | `font-size: 1.5rem; font-weight: 700; vertical-align: middle;` | The style for the symbol.                                  |
+| contentStyle   | String / Object |          `width: 98%; margin: auto; padding: .5rem;`           | The style for the content.                                 |
+| accordionClass | String / Object |                             `null`                             | The classes for the accordion.                             |
+| headerClass    | String / Object |                             `null`                             | The classes for the header.                                |
+| symbolClass    | String / Object |                             `null`                             | The classes for the symbol.                                |
+| contentClass   | String / Object |                             `null`                             | The classes for the content.                               |
+
+## Events
+| Name   | Description                                                      |
+| :----- | ---------------------------------------------------------------- |
+| open   | Emitted each time the accordion is opened.                       |
+| close  | Emitted each time the accordion is closed.                       |
+| switch | Emitted each time the accordion switches between open and close. |
