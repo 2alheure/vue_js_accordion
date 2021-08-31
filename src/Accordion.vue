@@ -14,6 +14,7 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   align-self: center;
+  user-select: none;
 }
 
 .accordion-content {
@@ -22,16 +23,31 @@
 </style>
 
 <template>
-  <div class="accordion" :style="accordionStyle" :class="accordionClass">
-    <div class="accordion-header" :style="headerStyle" :class="headerClass" @click="isOpened = !isOpened">
+  <div class="accordion">
+    <div
+      class="accordion-header"
+      :style="headerStyle"
+      :class="headerClass"
+      @click="open"
+    >
       <div>
         <slot name="header"></slot>
       </div>
 
-      <span class="accordion-symbol" v-html="correctSymbol" :style="symbolStyle" :class="symbolClass"></span>
+      <span
+        class="accordion-symbol"
+        v-html="correctSymbol"
+        :style="symbolStyle"
+        :class="symbolClass"
+      ></span>
     </div>
 
-    <div class="accordion-content" :style="contentStyle" :class="contentClass" v-show="isOpened">
+    <div
+      class="accordion-content"
+      :style="contentStyle"
+      :class="contentClass"
+      v-show="isOpened"
+    >
       <slot></slot>
     </div>
   </div>
@@ -41,45 +57,46 @@
 export default {
   name: "accordion",
   props: {
-    accordionStyle: {
-      type: [String, Object],
-      default: "text-align: left; background-color: inherit; color: inherit;"
-    },
-    accordionClass: [String, Object],
     headerStyle: {
       type: [String, Object],
-      default: "padding: .5rem;"
+      default: "padding: .5rem;",
     },
     headerClass: [String, Object],
     symbolStyle: {
       type: [String, Object],
-      default: "font-size: 1.5rem; font-weight: 700; vertical-align: middle;"
+      default: "font-size: 1.5rem; font-weight: 700; vertical-align: middle;",
     },
     symbolClass: [String, Object],
     contentStyle: {
       type: [String, Object],
-      default: "width: 98%; margin: auto; padding: .5rem;"
+      default: "width: 98%; margin: auto; padding: .5rem;",
     },
     contentClass: [String, Object],
     symbolOpened: {
       type: String,
-      default: "&or;"
+      default: "&or;",
     },
     symbolClosed: {
       type: String,
-      default: "&gt;"
+      default: "&gt;",
     },
-    opened: Boolean
+    opened: Boolean,
   },
   data() {
     return {
-      isOpened: this.opened
+      isOpened: this.opened,
     };
   },
   computed: {
     correctSymbol() {
       return this.isOpened ? this.symbolOpened : this.symbolClosed;
-    }
-  }
+    },
+  },
+  methods: {
+    open() {
+      this.isOpened = !this.isOpened;
+      this.$emit("open");
+    },
+  },
 };
 </script>
